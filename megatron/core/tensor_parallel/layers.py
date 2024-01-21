@@ -207,7 +207,7 @@ class VocabParallelEmbedding(torch.nn.Module):
 
     def forward(self, input_):
         assert not torch.any(
-            (input_ < 0) | (input_ >= self.num_embeddings)
+            (input_ < -1) | (input_ >= self.num_embeddings)
         ), "An input token is out of bounds of the embedding table"
         if self.tensor_model_parallel_size > 1:
             # Build the mask.
